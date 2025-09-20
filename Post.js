@@ -1,8 +1,14 @@
-const mongoose = require("mongoose");
+import React from "react";
+import PostItem from "./PostItem";
 
-const PostSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  body: { type: String, required: true },
-});
+const Post = ({ posts }) => {
+  return (
+    <div>
+      {posts?.map((singlePost) => (
+        <PostItem key={singlePost._id} post={singlePost} />
+      ))}
+    </div>
+  );
+};
 
-module.exports = mongoose.model("Post", PostSchema);
+export default Post;
